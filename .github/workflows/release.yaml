@@ -39,7 +39,7 @@ jobs:
           Y=$(echo $TAG | sed -E 's/v([0-9]+)\.([0-9]+)/\2/')
         fi
         Y=$((Y+1))
-        echo "NEXT_TAG=v${X}.${Y}" >> $GITHUB_ENV
+        echo "NEXT_TAG=v${X}.${Y}.0" >> $GITHUB_ENV
 
     - name: Create and push tag
       env:
