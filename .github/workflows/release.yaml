@@ -29,14 +29,14 @@ jobs:
       id: get_last_tag
       run: |
         git fetch --tags
-        TAG=$(git tag --list 'muxi/v*' --sort=-v:refname | head -n 1)
+        TAG=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
         echo "LAST_TAG=$TAG" >> $GITHUB_ENV
         if [ -z "$TAG" ]; then
           X=0
           Y=0
         else
-          X=$(echo $TAG | sed -E 's/muxi\/v([0-9]+)\.([0-9]+)/\1/')
-          Y=$(echo $TAG | sed -E 's/muxi\/v([0-9]+)\.([0-9]+)/\2/')
+          X=$(echo $TAG | sed -E 's/v([0-9]+)\.([0-9]+)/\1/')
+          Y=$(echo $TAG | sed -E 's/v([0-9]+)\.([0-9]+)/\2/')
         fi
         Y=$((Y+1))
         echo "NEXT_TAG=v${X}.${Y}" >> $GITHUB_ENV
